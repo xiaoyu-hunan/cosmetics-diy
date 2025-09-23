@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>产品详情 - 化妆品DIY配方库</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary-color: #ec4899;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --info-color: #06b6d4;
+            --light-bg: #f8fafc;
+            --dark-bg: #1e293b;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --border-color: #e2e8f0;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--light-bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .navbar {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%) !important;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: var(--shadow-md);
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: white !important;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-nav .nav-link {
+            color: rgba(255, 255, 255, 0.9) !important;
+            font-weight: 500;
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+            margin: 0 0.25rem;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: white !important;
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-1px);
+        }
+
+        .card {
+            border: none;
+            border-radius: 1rem;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+            background: white;
+            overflow: hidden;
+        }
+
+        .step-number {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-right: 1rem;
+            box-shadow: var(--shadow-md);
+        }
+
+        .benefit-item {
+            background: linear-gradient(135deg, var(--success-color) 0%, var(--info-color) 100%);
+            color: white;
+            padding: 0.75rem 1.25rem;
+            border-radius: 1rem;
+            margin: 0.375rem;
+            display: inline-block;
+            font-weight: 600;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+        }
+
+        .benefit-item:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn {
+            border-radius: 0.75rem;
+            font-weight: 600;
+            padding: 0.75rem 1.5rem;
+            transition: all 0.3s ease;
+            border: none;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+            border: none;
+        }
+
+        .footer {
+            background: linear-gradient(135deg, var(--dark-bg) 0%, #334155 100%);
+            color: white;
+            padding: 4rem 0 2rem;
+            margin-top: 4rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-seedling me-2"></i>化妆品DIY配方库
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <i class="fas fa-home me-1"></i>首页
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="categories.html">
+                            <i class="fas fa-th-large me-1"></i>分类
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="search.html">
+                            <i class="fas fa-search me-1"></i>搜索
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主要内容 -->
+    <main class="container my-4">
+        <!-- 产品详情 -->
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center mb-4">
+                            <span class="badge bg-primary me-3">护肤品</span>
+                            <h1 class="h2 mb-0">薰衣草保湿面霜</h1>
+                        </div>
+                        
+                        <p class="lead mb-4">
+                            适合干性皮肤的保湿面霜，深层滋润，天然温和。使用薰衣草精油和天然保湿成分制作，为肌肤提供深层滋养。
+                        </p>
+
+                        <!-- 产品功效 -->
+                        <div class="mb-4">
+                            <h5><i class="fas fa-star me-2"></i>产品功效</h5>
+                            <div class="benefits-container">
+                                <span class="benefit-item">深层保湿</span>
+                                <span class="benefit-item">舒缓肌肤</span>
+                                <span class="benefit-item">天然成分</span>
+                                <span class="benefit-item">温和无刺激</span>
+                            </div>
+                        </div>
+
+                        <!-- 制作步骤 -->
+                        <div class="mb-4">
+                            <h5><i class="fas fa-list-ol me-2"></i>制作步骤</h5>
+                            <div class="steps">
+                                <div class="d-flex align-items-start mb-3">
+                                    <div class="step-number">1</div>
+                                    <div>
+                                        <strong>准备原料</strong>
+                                        <p class="mb-0">准备好所有所需原料，确保工作区域干净卫生。</p>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-start mb-3">
+                                    <div class="step-number">2</div>
+                                    <div>
+                                        <strong>混合基础油</strong>
+                                        <p class="mb-0">将荷荷巴油和甜杏仁油混合均匀。</p>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-start mb-3">
+                                    <div class="step-number">3</div>
+                                    <div>
+                                        <strong>添加乳化剂</strong>
+                                        <p class="mb-0">加入乳化剂，充分搅拌至完全溶解。</p>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-start mb-3">
+                                    <div class="step-number">4</div>
+                                    <div>
+                                        <strong>添加精油</strong>
+                                        <p class="mb-0">最后加入薰衣草精油，搅拌均匀。</p>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-start mb-3">
+                                    <div class="step-number">5</div>
+                                    <div>
+                                        <strong>装瓶保存</strong>
+                                        <p class="mb-0">将成品装入干净的容器中，存放在阴凉干燥处。</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 使用方法 -->
+                        <div class="mb-4">
+                            <h5><i class="fas fa-hand-holding-water me-2"></i>使用方法</h5>
+                            <ul class="list-unstyled">
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>洁面后，取适量面霜均匀涂抹于面部</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>轻柔按摩至完全吸收</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>建议早晚使用，效果更佳</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>首次使用前请进行皮肤测试</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <!-- 原料清单 -->
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5 class="mb-0"><i class="fas fa-list me-2"></i>原料清单</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="ingredient-list">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span>荷荷巴油</span>
+                                <span class="badge bg-primary">30ml</span>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span>甜杏仁油</span>
+                                <span class="badge bg-primary">20ml</span>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span>乳化剂</span>
+                                <span class="badge bg-primary">5g</span>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span>薰衣草精油</span>
+                                <span class="badge bg-primary">5滴</span>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span>维生素E</span>
+                                <span class="badge bg-primary">2滴</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 注意事项 -->
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5 class="mb-0"><i class="fas fa-exclamation-triangle me-2"></i>注意事项</h5>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><i class="fas fa-info-circle text-info me-2"></i>请确保所有原料质量合格</li>
+                            <li class="mb-2"><i class="fas fa-info-circle text-info me-2"></i>制作过程中保持清洁卫生</li>
+                            <li class="mb-2"><i class="fas fa-info-circle text-info me-2"></i>使用前进行皮肤过敏测试</li>
+                            <li class="mb-2"><i class="fas fa-info-circle text-info me-2"></i>存放在阴凉干燥处</li>
+                            <li class="mb-2"><i class="fas fa-info-circle text-info me-2"></i>建议3个月内使用完毕</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 操作按钮 -->
+                <div class="card">
+                    <div class="card-body text-center">
+                        <button class="btn btn-primary mb-3 w-100">
+                            <i class="fas fa-heart me-2"></i>收藏配方
+                        </button>
+                        <button class="btn btn-outline-primary mb-3 w-100">
+                            <i class="fas fa-share-alt me-2"></i>分享配方
+                        </button>
+                        <a href="categories.html" class="btn btn-outline-secondary w-100">
+                            <i class="fas fa-arrow-left me-2"></i>返回分类
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <h5><i class="fas fa-seedling me-2"></i>化妆品DIY配方库</h5>
+                    <p class="mb-3">专业的天然化妆品制作指南，让美丽更自然。</p>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <h5><i class="fas fa-link me-2"></i>快速导航</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-white-50">首页</a></li>
+                        <li><a href="categories.html" class="text-white-50">产品分类</a></li>
+                        <li><a href="search.html" class="text-white-50">搜索配方</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-12 mb-4">
+                    <h5><i class="fas fa-envelope me-2"></i>联系方式</h5>
+                    <div class="contact-info">
+                        <div class="contact-item mb-2">
+                            <i class="fas fa-envelope me-2"></i>
+                            <a href="mailto:xinyaoyu089@gmail.com" class="text-white-50">xinyaoyu089@gmail.com</a>
+                        </div>
+                        <div class="contact-item mb-2">
+                            <i class="fas fa-map-marker-alt me-2"></i>
+                            <span class="text-white-50">中国湖北</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4" style="border-color: rgba(255,255,255,0.2);">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0 text-white-50">
+                        <i class="fas fa-heart text-danger me-1"></i>
+                        © 2024 化妆品DIY配方库. 用心制作每一个配方
+                    </p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="mb-0 text-white-50">
+                        <small>本网站提供的配方仅供参考，使用前请进行皮肤测试</small>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
